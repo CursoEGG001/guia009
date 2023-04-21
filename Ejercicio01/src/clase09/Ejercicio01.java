@@ -38,7 +38,7 @@ public class Ejercicio01 {
                 + servicio.reemplazar("a", ":"));
 
         servicio.compararLongitud("La casa blanca");
-servicio.unirFrases("gigante");
+        servicio.unirFrases("gigante");
         System.out.println("Tenemos ahora: \n" + cadena.getFrase());
     }
 
