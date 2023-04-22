@@ -28,10 +28,12 @@ public class Ejercicio02 {
 
         ParDeNumeros nums1 = new ParDeNumeros();
         ParDeNumerosServicio pdnS1 = new ParDeNumerosServicio(nums1);
+        pdnS1.mostrarValores();
 
         System.out.println("Estos serían los valores: " + pdnS1.devolverMayor() + " es el mayor de los dos numeros " + nums1.getNumero1() + " y " + nums1.getNumero2());
         System.out.println("Estos sería así : " + pdnS1.devolverMayor() + " es el mayor de los dos numeros " + nums1.getNumero1() + " y " + nums1.getNumero2());
         System.out.println("Según este programa la potencia sería : " + pdnS1.calcularPotencia());
+        System.out.println("Según este programa la raíz sería : " + pdnS1.calcularRaiz());
     }
 
 }

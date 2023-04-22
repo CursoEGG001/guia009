@@ -13,8 +13,8 @@ public class ParDeNumeros {
     private double numero2;
     
     public ParDeNumeros() {
-        this.numero1 = Math.round(Math.random()*1000+1);
-        this.numero2 = Math.round(Math.random()*1000+1);
+        this.numero1 = Math.round(Math.random()*(100-1)+1);
+        this.numero2 = Math.round(Math.random()*(100-1)+1);
     }
     
     public double getNumero1() {
