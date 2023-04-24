@@ -37,5 +37,6 @@ public class ArregloServicio {
             arregloB[i] = arregloA[i];
         }
         Arrays.fill(arregloB, 10, arregloB.length, 0.5);
+       
     }
 }
