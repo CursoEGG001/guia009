@@ -53,7 +53,7 @@ public class Ahorcado {
             if (this.palabra[i] == letra) {
                 encontrada = true;
                 acertadas[i] = true;
-                if (!acertadas[i]) this.letrasEncontradas++;
+                if (!acertadas[i]) this.letrasEncontradas++; // Para no repetir la suma innecesariamente
             }
         }
         if (!encontrada) {
