@@ -11,7 +11,7 @@ public class Ahorcado {
 
     private char[] palabra;
     private boolean[] acertadas;
-    
+
     private int letrasEncontradas;
     private int intentosMaximos;
     private int intentosRestantes;
@@ -32,12 +32,15 @@ public class Ahorcado {
         System.out.println("Ingrese la palabra a adivinar:");
         String palabraStr = scanner.nextLine().toUpperCase();
         this.palabra = palabraStr.toCharArray();
-        this.acertadas= new boolean[palabra.length];
+        this.acertadas = new boolean[palabra.length];
         Arrays.fill(acertadas, false);
         this.letrasEncontradas = 0;
-        System.out.println("Ingrese la cantidad de intentos máximos:");
+        System.out.println("Ingrese la cantidad de intentos máximos (Sugeridos " + palabra.length + "): ");
         this.intentosMaximos = scanner.nextInt();
         this.intentosRestantes = this.intentosMaximos;
+        for (int i = 0; i < 75; i++) {
+            System.out.println("");
+        }
     }
 
     public void longitud() {
@@ -50,7 +53,7 @@ public class Ahorcado {
             if (this.palabra[i] == letra) {
                 encontrada = true;
                 acertadas[i] = true;
-                this.letrasEncontradas++;
+                if (!acertadas[i]) this.letrasEncontradas++;
             }
         }
         if (!encontrada) {
@@ -67,12 +70,12 @@ public class Ahorcado {
         char[] palabraEncontrada = new char[this.palabra.length];
         Arrays.fill(palabraEncontrada, '_');
         for (int i = 0; i < this.palabra.length; i++) {
-            if (acertadas[i]){
+            if (acertadas[i]) {
                 palabraEncontrada[i] = this.palabra[i];
+            }
         }
-        }
-        System.out.println("Palabra: " + new String(palabraEncontrada));
-        System.out.println("Número de letras (encontradas, faltantes): (" + this.letrasEncontradas + "," + faltantes + ")");
+        System.out.println("\nHasta Ahora: " + new String(palabraEncontrada));
+        System.out.println("Número de letras (encontradas, faltantes): (" + this.letrasEncontradas + "," + faltantes + ")\n");
     }
 
     public void intentos() {
@@ -86,8 +89,15 @@ public class Ahorcado {
             System.out.println("Ingrese una letra:");
             char letra = scanner.next().toUpperCase().charAt(0);
             if (this.buscar(letra)) {
+                boolean todasAcertadas=true;
                 this.encontradas();
-                if (this.letrasEncontradas == this.palabra.length) {
+                for (boolean acertada : acertadas) {
+                    if (!acertada) {
+                       todasAcertadas = false;
+                    }
+                }
+               
+                if ( todasAcertadas ) {
                     completado = true;
                     System.out.println("¡Felicidades, has ganado!");
                 }
