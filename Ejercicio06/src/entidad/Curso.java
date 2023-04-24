@@ -110,7 +110,7 @@ public class Curso {
 
     @Override
     public String toString() {
-        return "Curso {\n" + "nombreCurso :" + nombreCurso + ", cantidadHorasPorDia :" + cantidadHorasPorDia + ", cantidadDiasPorSemana: " + cantidadDiasPorSemana + "\n turno :" + turno + "\n precioPorHora: " + precioPorHora + "\n alumnos:" + Arrays.toString(this.getAlumnos()) + "\n }";
+        return "Curso {\n" + "Curso :" + nombreCurso + ", cantidad de Horas Por Dia :" + cantidadHorasPorDia + ", cantidad de Dias Por Semana: " + cantidadDiasPorSemana + "\n Turno :" + turno + "\n precio Por Hora: " + precioPorHora + "\n Alumnos:" + Arrays.toString(this.getAlumnos()) + "\n }";
     }
     
 }
