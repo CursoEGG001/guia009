@@ -11,9 +11,6 @@ public class AhorcadoService {
     public static void jugar() {
         Ahorcado ahorcado = new Ahorcado();
         ahorcado.crearJuego();
-        ahorcado.longitud();
-        ahorcado.intentos();
-        ahorcado.encontradas();
         ahorcado.juego();
     }
 }

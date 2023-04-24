@@ -34,7 +34,6 @@ public class Ahorcado {
         this.palabra = palabraStr.toCharArray();
         this.acertadas = new boolean[palabra.length];
         Arrays.fill(acertadas, false);
-        this.letrasEncontradas = 0;
         System.out.println("Ingrese la cantidad de intentos máximos (Sugeridos " + palabra.length + "): ");
         this.intentosMaximos = scanner.nextInt();
         this.intentosRestantes = this.intentosMaximos;
@@ -53,7 +52,6 @@ public class Ahorcado {
             if (this.palabra[i] == letra) {
                 encontrada = true;
                 acertadas[i] = true;
-                if (!acertadas[i]) this.letrasEncontradas++; // Para no repetir la suma innecesariamente
             }
         }
         if (!encontrada) {
@@ -66,14 +64,16 @@ public class Ahorcado {
     }
 
     public void encontradas() {
-        int faltantes = this.palabra.length - this.letrasEncontradas;
+        this.letrasEncontradas = 0; // Puesta en cero
         char[] palabraEncontrada = new char[this.palabra.length];
         Arrays.fill(palabraEncontrada, '_');
         for (int i = 0; i < this.palabra.length; i++) {
             if (acertadas[i]) {
                 palabraEncontrada[i] = this.palabra[i];
+                this.letrasEncontradas++; // Para no repetir la suma innecesariamente
             }
         }
+        int faltantes = this.palabra.length - this.letrasEncontradas;
         System.out.println("\nHasta Ahora: " + new String(palabraEncontrada));
         System.out.println("Número de letras (encontradas, faltantes): (" + this.letrasEncontradas + "," + faltantes + ")\n");
     }
@@ -89,15 +89,16 @@ public class Ahorcado {
             System.out.println("Ingrese una letra:");
             char letra = scanner.next().toUpperCase().charAt(0);
             if (this.buscar(letra)) {
-                boolean todasAcertadas=true;
+
+                boolean todasAcertadas = true;
                 this.encontradas();
                 for (boolean acertada : acertadas) {
                     if (!acertada) {
-                       todasAcertadas = false;
+                        todasAcertadas = false;
                     }
                 }
-               
-                if ( todasAcertadas ) {
+
+                if (todasAcertadas) {
                     completado = true;
                     System.out.println("¡Felicidades, has ganado!");
                 }
