@@ -34,8 +34,8 @@ public class Ejercicio01 {
         CadenaServicio servicio = new CadenaServicio(cadena);
         System.out.println("La frase tiene " + servicio.mostrarVocales() + " vocales");
         System.out.println("La frase invertida es: " + servicio.invertirFrase());
-        System.out.println("Te cambia a por \":\" : "
-                + servicio.reemplazar("a", ":"));
+        System.out.println("Te cambia a por \"~\" : "
+                + servicio.reemplazar("a", "~"));
 
         servicio.compararLongitud("La casa blanca");
         servicio.unirFrases("gigante");
