@@ -15,7 +15,7 @@ public class ArregloServicio {
 
     public static void inicializarA(double[] arreglo) {
         for (int i = 0; i < arreglo.length; i++) {
-            arreglo[i] = Math.random() * 100;
+            arreglo[i] = Math.floor(Math.random() * 100);
         }
     }
 
