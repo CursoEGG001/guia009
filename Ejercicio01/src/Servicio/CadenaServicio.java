@@ -60,7 +60,7 @@ public class CadenaServicio {
     public int vecesRepetido(String letra) {
         int count = 0;
         for (int i = 0; i < this.cadena.getLongitud(); i++) {
-            if (this.cadena.getFrase().charAt(i) == letra.charAt(0)) {
+            if (this.cadena.getFrase().toLowerCase().charAt(i) == letra.toLowerCase().charAt(0)) {
                 count++;
             }
         }

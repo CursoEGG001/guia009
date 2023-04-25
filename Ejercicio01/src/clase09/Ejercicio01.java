@@ -30,9 +30,10 @@ public class Ejercicio01 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Cadena cadena = new Cadena("Casa Blanca");
+        Cadena cadena = new Cadena("Casa Blanca colorada");
         CadenaServicio servicio = new CadenaServicio(cadena);
         System.out.println("La frase tiene " + servicio.mostrarVocales() + " vocales");
+        System.out.println("Cuenta con c al menos " + servicio.vecesRepetido("c") + " veces" );
         System.out.println("La frase invertida es: " + servicio.invertirFrase());
         System.out.println("Te cambia a por \"~\" : "
                 + servicio.reemplazar("a", "~"));
