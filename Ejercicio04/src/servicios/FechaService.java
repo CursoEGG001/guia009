@@ -27,7 +27,6 @@ public class FechaService {
     }
 
     public static int diferencia(Date fecha1, Date fecha2) {
-        int anios = (int) ((fecha1.getTime() - fecha2.getTime()) / (1000 * 60 * 60 * 24 * 365L));
-        return anios;
+        return (int) ((fecha1.getTime() - fecha2.getTime()) / (1000 * 60 * 60 * 24 * 365L));
     }
 }
