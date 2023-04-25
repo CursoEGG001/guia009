@@ -33,11 +33,13 @@ public class Ejercicio01 {
         Cadena cadena = new Cadena("Casa Blanca colorada");
         CadenaServicio servicio = new CadenaServicio(cadena);
         System.out.println("La frase tiene " + servicio.mostrarVocales() + " vocales");
-        System.out.println("Cuenta con c al menos " + servicio.vecesRepetido("c") + " veces" );
+        System.out.println("Cuenta con c al menos " + servicio.vecesRepetido("c") + " veces");
         System.out.println("La frase invertida es: " + servicio.invertirFrase());
         System.out.println("Te cambia a por \"~\" : "
                 + servicio.reemplazar("a", "~"));
-
+        if (servicio.contiene("B")) {
+            System.out.println("Esta tiene tambien la letra \"B\"");
+        }
         servicio.compararLongitud("La casa blanca");
         servicio.unirFrases("gigante");
         System.out.println("Tenemos ahora: \n" + cadena.getFrase());
