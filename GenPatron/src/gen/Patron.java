@@ -18,10 +18,10 @@ public class Patron {
         for (int i = 0; i < 25; i++) {
             for (int j = 0; j < 80; j++) {
                 if (Math.random() < 0.5) {
-                    System.out.print("┼");
+                    System.out.print("/");
                     
                 } else {
-                    System.out.print("┤");
+                    System.out.print("\\");
                 }
                 
             }
