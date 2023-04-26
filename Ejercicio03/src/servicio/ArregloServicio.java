@@ -5,6 +5,8 @@
 package servicio;
 import java.util.Arrays;
 import java.util.Random;
+
+
 /**
  *
  * @author pc
@@ -14,8 +16,10 @@ import java.util.Random;
 public class ArregloServicio {
 
     public static void inicializarA(double[] arreglo) {
+        Random rnd = new Random();
+        
         for (int i = 0; i < arreglo.length; i++) {
-            arreglo[i] = Math.floor(Math.random() * 100);
+            arreglo[i] = rnd.nextInt(100);
         }
     }
 
