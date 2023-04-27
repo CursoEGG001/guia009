@@ -22,7 +22,7 @@ public class Calendario {
         String date1String = scanner.nextLine();
         String[] date1Parts = date1String.split("-");
         int year1 = Integer.parseInt(date1Parts[0]);
-        int month1 = Integer.parseInt(date1Parts[1]) - 1; // month is 0-based
+        int month1 = Integer.parseInt(date1Parts[1]) - 1; // Los meses comienzan desde 0
         int day1 = Integer.parseInt(date1Parts[2]);
 
         // Conseguir segunda fecha (Con instancia Calendar)
