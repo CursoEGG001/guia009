@@ -108,15 +108,17 @@ public class MExtras02 {
         boolean existeJugada = false;
 
         do {
-            if (pila.isEmpty()) break;
+            if (pila.isEmpty()) {
+                break;
+            }
             Ficha buscada = new Ficha(); //Solo la crea, no pertenece al juego y almacena lo buscado    
             // Turno de buscar una pieza en la otra mano
             if (max1 > max2) {
                 if (!mano2.isEmpty()) {
+                    // Fijarse en las fichas de los extremos en la mesa si encuentro conjunto
                     List<Ficha> usables = FichaServicio.getCombinables(mesa, mano2);
                     for (int i = 0; i < mano2.size(); i++) {
 
-                        // Fijarse en las fichas de los extremos en la mesa si encuentro conjunto
                         int CntMAX = 0;
                         for (Ficha usable : usables) {
 
@@ -137,10 +139,10 @@ public class MExtras02 {
                 }
             } else {
                 if (!mano1.isEmpty()) {
+                    // Fijarse en las fichas de los extremos en la mesa si encuentro conjunto
                     List<Ficha> usables = FichaServicio.getCombinables(mesa, mano1);
                     for (int i = 0; i < mano1.size(); i++) {
                         buscada = new Ficha(); //Solo la crea, no pertenece al juego y almacena lo buscado
-                        // Fijarse en las fichas de los extremos en la mesa si encuentro conjunto
 
                         int CntMAX = 0;
                         for (Ficha usable : usables) {
@@ -148,6 +150,8 @@ public class MExtras02 {
                             if (!usables.isEmpty() && usable.getLadoDerecho() + usable.getLadoIzquierdo() > CntMAX) {
                                 CntMAX = usable.getLadoDerecho() + usable.getLadoIzquierdo();
                                 buscada = usable;
+                            } else {
+                                existeJugada=false;
                             }
 
                         }
@@ -188,11 +192,10 @@ public class MExtras02 {
                 }
             } else {
                 System.out.println("Esto Sigue...");
-                
-
+                break;
             }
             System.out.println("Mesa: " + mesa);
-        } while (!(pila.isEmpty()));
+        } while (!(pila.isEmpty()) && (!mano1.isEmpty() || !mano2.isEmpty()));
 
         System.out.println("Mano 1: " + mano1);
         for (int i = 0; i < mano1.size(); i++) {
