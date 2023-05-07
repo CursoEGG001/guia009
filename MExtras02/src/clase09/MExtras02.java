@@ -5,6 +5,7 @@
 package clase09;
 
 import Juego.Ficha;
+import Juego.Jugador;
 import Servicio.FichaServicio;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -105,98 +106,124 @@ public class MExtras02 {
         System.out.println("En la Mesa: " + mesa);
 
         //Aquí comienza el juego
-        boolean existeJugada = false;
+       // boolean existeJugada = false; No muy seguro de usar.
+        boolean pasa1 = false;
+        boolean pasa2 = false;
 
-        do {
-            if (pila.isEmpty()) {
-                break;
-            }
-            Ficha buscada = new Ficha(); //Solo la crea, no pertenece al juego y almacena lo buscado    
-            // Turno de buscar una pieza en la otra mano
-            if (max1 > max2) {
-                if (!mano2.isEmpty()) {
-                    // Fijarse en las fichas de los extremos en la mesa si encuentro conjunto
-                    List<Ficha> usables = FichaServicio.getCombinables(mesa, mano2);
-                    for (int i = 0; i < mano2.size(); i++) {
+        while (!pila.isEmpty() && !mano1.isEmpty() && !mano2.isEmpty()) {
+            do {
 
-                        int CntMAX = 0;
-                        for (Ficha usable : usables) {
-
-                            if (!usables.isEmpty() && usable.getLadoDerecho() + usable.getLadoIzquierdo() > CntMAX) {
-                                CntMAX = usable.getLadoDerecho() + usable.getLadoIzquierdo();
-                                buscada = usable;
-
-                            }
-                        }
-                    }
-
-                    existeJugada = FichaServicio.poneFicha(mesa, mano2, buscada);
-
-                } else {
-                    if (!pila.isEmpty()) {
-                        existeJugada = false;
-                    }
-                }
-            } else {
-                if (!mano1.isEmpty()) {
-                    // Fijarse en las fichas de los extremos en la mesa si encuentro conjunto
-                    List<Ficha> usables = FichaServicio.getCombinables(mesa, mano1);
-                    for (int i = 0; i < mano1.size(); i++) {
-                        buscada = new Ficha(); //Solo la crea, no pertenece al juego y almacena lo buscado
-
-                        int CntMAX = 0;
-                        for (Ficha usable : usables) {
-
-                            if (!usables.isEmpty() && usable.getLadoDerecho() + usable.getLadoIzquierdo() > CntMAX) {
-                                CntMAX = usable.getLadoDerecho() + usable.getLadoIzquierdo();
-                                buscada = usable;
-                            } else {
-                                existeJugada=false;
-                            }
-
-                        }
-                    }
-
-                    existeJugada = FichaServicio.poneFicha(mesa, mano1, buscada);
-
-                } else {
-                    if (!pila.isEmpty()) {
-
-                        existeJugada = false;
-                    }
-
-                }
-            }
-
-            if (!existeJugada) {
-                System.out.println("No puede jugar su ficha");
                 if (max1 > max2) {
-                    if (mesa.size() % 2 != 0) {
-                        mano2.add(pila.remove(0));
-                        existeJugada = true;
 
-                    } else {
-                        mano1.add(pila.remove(0));
-                        existeJugada = true;
-                    }
+                    pasa1 = !Juego.Jugador.Juega("Primer Jugador", mano1, mesa, pasa1);
+                    pasa2 = !mano2.isEmpty();
+                            System.out.println("Mano 1: " + mano1);
                 } else {
-                    if (mesa.size() % 2 != 0) {
-                        mano1.add(pila.remove(0));
-                        existeJugada = true;
 
-                    } else {
-                        mano2.add(pila.remove(0));
-                        existeJugada = true;
-
-                    }
+                    pasa2 = !Juego.Jugador.Juega("Segundo Jugador", mano2, mesa, pasa2);
+                    pasa1 = !mano1.isEmpty();
+                            System.out.println("Mano 2: " + mano2);
                 }
-            } else {
-                System.out.println("Esto Sigue...");
-                break;
-            }
-            System.out.println("Mesa: " + mesa);
-        } while (!(pila.isEmpty()) && (!mano1.isEmpty() || !mano2.isEmpty()));
 
+            } while (!(pasa2 || pasa1));
+            if (max1 > max2) {
+                mano1.add(pila.remove(0));
+                pasa1 = false;
+            } else {
+                mano2.add(pila.remove(0));
+                pasa2 = false;
+            }
+
+        } 
+//        do {
+//            if (pila.isEmpty()) {
+//                break;
+//            }
+//            Ficha buscada = new Ficha(); //Solo la crea, no pertenece al juego y almacena lo buscado    
+//            // Turno de buscar una pieza en la otra mano
+//            if (max1 > max2) {
+//                if (!mano2.isEmpty()) {
+//                    // Fijarse en las fichas de los extremos en la mesa si encuentro conjunto
+//                    List<Ficha> usables = FichaServicio.getCombinables(mesa, mano2);
+//                    for (int i = 0; i < mano2.size(); i++) {
+//
+//                        int CntMAX = 0;
+//                        for (Ficha usable : usables) {
+//
+//                            if (!usables.isEmpty() && usable.getLadoDerecho() + usable.getLadoIzquierdo() > CntMAX) {
+//                                CntMAX = usable.getLadoDerecho() + usable.getLadoIzquierdo();
+//                                buscada = usable;
+//
+//                            }
+//                        }
+//                    }
+//
+//                    existeJugada = FichaServicio.poneFicha(mesa, mano2, buscada);
+//
+//                } else {
+//                    if (!pila.isEmpty()) {
+//                        existeJugada = false;
+//                    }
+//                }
+//            } else {
+//                if (!mano1.isEmpty()) {
+//                    // Fijarse en las fichas de los extremos en la mesa si encuentro conjunto
+//                    List<Ficha> usables = FichaServicio.getCombinables(mesa, mano1);
+//                    for (int i = 0; i < mano1.size(); i++) {
+//                        buscada = new Ficha(); //Solo la crea, no pertenece al juego y almacena lo buscado
+//
+//                        int CntMAX = 0;
+//                        for (Ficha usable : usables) {
+//
+//                            if (!usables.isEmpty() && usable.getLadoDerecho() + usable.getLadoIzquierdo() > CntMAX) {
+//                                CntMAX = usable.getLadoDerecho() + usable.getLadoIzquierdo();
+//                                buscada = usable;
+//                            } else {
+//                                existeJugada=false;
+//                            }
+//
+//                        }
+//                    }
+//
+//                    existeJugada = FichaServicio.poneFicha(mesa, mano1, buscada);
+//
+//                } else {
+//                    if (!pila.isEmpty()) {
+//
+//                        existeJugada = false;
+//                    }
+//
+//                }
+//            }
+//
+//            if (!existeJugada) {
+//                System.out.println("No puede jugar su ficha");
+//                if (max1 > max2) {
+//                    if (mesa.size() % 2 != 0) {
+//                        mano2.add(pila.remove(0));
+//                        existeJugada = true;
+//
+//                    } else {
+//                        mano1.add(pila.remove(0));
+//                        existeJugada = true;
+//                    }
+//                } else {
+//                    if (mesa.size() % 2 != 0) {
+//                        mano1.add(pila.remove(0));
+//                        existeJugada = true;
+//
+//                    } else {
+//                        mano2.add(pila.remove(0));
+//                        existeJugada = true;
+//
+//                    }
+//                }
+//            } else {
+//                System.out.println("Esto Sigue...");
+//                break;
+//            }
+//            System.out.println("Mesa: " + mesa);
+//        } while (!(pila.isEmpty()) && (!mano1.isEmpty() || !mano2.isEmpty()));
         System.out.println("Mano 1: " + mano1);
         for (int i = 0; i < mano1.size(); i++) {
             System.out.print("(" + mano1.get(i) + ") _[" + i + "]_,");

@@ -45,14 +45,14 @@ public class FichaServicio {
         Ficha aComparar = pil1.get(0);
         for (int p1 = 0; p1 < pil2.size(); p1++) {
             if (aComparar.getLadoIzquierdo() == pil2.get(p1).getLadoIzquierdo()
-             || aComparar.getLadoIzquierdo() == pil2.get(p1).getLadoDerecho()) {
+                    || aComparar.getLadoIzquierdo() == pil2.get(p1).getLadoDerecho()) {
                 elementos.add(pil2.get(p1));
             }
         }
         aComparar = pil1.get(pil1.size() - 1);
         for (int p2 = 0; p2 < pil2.size(); p2++) {
-            if (aComparar.getLadoIzquierdo() == pil2.get(p2).getLadoIzquierdo() 
-             || aComparar.getLadoIzquierdo() == pil2.get(p2).getLadoDerecho()) {
+            if (aComparar.getLadoIzquierdo() == pil2.get(p2).getLadoIzquierdo()
+                    || aComparar.getLadoIzquierdo() == pil2.get(p2).getLadoDerecho()) {
                 elementos.add(pil2.get(p2));
             }
         }
@@ -68,29 +68,39 @@ public class FichaServicio {
      * @return si puede realizar la operación da verdadero
      */
     public static boolean poneFicha(List<Ficha> pila1, List<Ficha> pila2, Ficha ficha) {
-        if (ficha.getLadoDerecho() == pila1.get(0).getLadoIzquierdo()) {
-            pila1.add(0, ficha);
-            pila2.remove(ficha);
+        boolean bandera=false;
+        if (!pila2.isEmpty()) {
 
-            return true;
-        } else if (ficha.getLadoIzquierdo() == pila1.get((pila1.size() - 1)).getLadoDerecho()) {
-            pila1.add(pila1.size() - 1, ficha);
-            pila2.remove(ficha);
+            if (ficha.getLadoDerecho() == pila1.get(0).getLadoIzquierdo()) {
+                pila1.add(0, ficha);
+                pila2.remove(ficha);
 
-            return true;
-        } else if (ficha.girarFicha().getLadoDerecho() == pila1.get(0).getLadoIzquierdo()) {
-            pila1.add(0, ficha.girarFicha());
-            pila2.remove(ficha.girarFicha());
+                bandera = true;
+            } else if (ficha.getLadoIzquierdo() == pila1.get((pila1.size() - 1)).getLadoDerecho()) {
+                pila1.add(pila1.size() - 1, ficha);
+                pila2.remove(ficha);
 
-            return true;
-        } else if (ficha.girarFicha().getLadoIzquierdo() == pila1.get((pila1.size() - 1)).getLadoDerecho()) {
-            pila1.add((pila1.size() - 1), ficha.girarFicha());
-            pila2.remove(ficha.girarFicha());
+                bandera = true;
+            } else if (ficha.girarFicha().getLadoDerecho() == pila1.get(0).getLadoIzquierdo()) {
+                pila1.add(0, ficha.girarFicha());
+                pila2.remove(ficha.girarFicha());
 
-            return true;
+                bandera = true;
+            } else if (ficha.girarFicha().getLadoIzquierdo() == pila1.get((pila1.size() - 1)).getLadoDerecho()) {
+                pila1.add((pila1.size() - 1), ficha.girarFicha());
+                pila2.remove(ficha.girarFicha());
 
+                bandera = true;
+
+            } else {
+                System.out.println("No hay Ficha para jugar");
+                bandera = false;
+            }
+
+            return bandera;
         } else {
-            return false;
+            System.out.println("No quedan Fichas ahí");
+            return bandera;
         }
     }
 }
