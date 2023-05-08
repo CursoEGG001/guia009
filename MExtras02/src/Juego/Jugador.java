@@ -27,13 +27,13 @@ public class Jugador {
 
             }
             if (!usables.isEmpty()) {
-
+                System.out.println(nombre + " usó una Ficha");
                 return (FichaServicio.poneFicha(pilaDescarte, manoJuego, laFicha));
             } else {
                 System.out.println("Pasa la mano " + nombre);
                 return false;
             }
-//return true; Solo cuando puede jugar.
+            //return true; Solo cuando puede jugar.
         } else {
             System.out.println(nombre + " no juega ahora.");
             return false;

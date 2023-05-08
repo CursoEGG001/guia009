@@ -74,22 +74,22 @@ public class FichaServicio {
             if (ficha.getLadoDerecho() == pila1.get(0).getLadoIzquierdo()) {
                 pila1.add(0, ficha);
                 pila2.remove(ficha);
-
+                System.out.println("Ficha Elegida en la izquierda");
                 bandera = true;
             } else if (ficha.getLadoIzquierdo() == pila1.get((pila1.size() - 1)).getLadoDerecho()) {
                 pila1.add(pila1.size() - 1, ficha);
                 pila2.remove(ficha);
-
+                System.out.println("Ficha Elegida en la derecha");
                 bandera = true;
             } else if (ficha.girarFicha().getLadoDerecho() == pila1.get(0).getLadoIzquierdo()) {
                 pila1.add(0, ficha.girarFicha());
                 pila2.remove(ficha.girarFicha());
-
+                System.out.println("Ficha Elegida girada puesta a la Izquierda");
                 bandera = true;
             } else if (ficha.girarFicha().getLadoIzquierdo() == pila1.get((pila1.size() - 1)).getLadoDerecho()) {
                 pila1.add((pila1.size() - 1), ficha.girarFicha());
                 pila2.remove(ficha.girarFicha());
-
+                System.out.println("Ficha Elegida girada puesta a la Derecha");
                 bandera = true;
 
             } else {
