@@ -122,6 +122,7 @@ public class MExtras02 {
                     pasa1 = !Juego.Jugador.Juega("Primer Jugador", mano1, mesa, pasa1);
                 }
             }
+            System.out.println("En la Mesa: " + mesa);
             if (max1 > max2) {
                 mano1.add(pila.remove(0));
                 pasa1 = false;
