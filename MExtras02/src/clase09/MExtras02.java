@@ -104,6 +104,32 @@ public class MExtras02 {
         }
         System.out.println("En la Mesa: " + mesa);
 
+//        boolean pasa1 = false;
+//        boolean pasa2 = false;
+//        int contador = 0;
+//        while (!pila.isEmpty() && !mano1.isEmpty() && !mano2.isEmpty()) {
+//            int jugadorActual = Juego.Jugador.Pasa(new boolean[]{pasa1, pasa2}, new List[]{mano1, mano2}, pila, contador);
+//
+//            if (max1 > max2) {
+//                if (!mano2.isEmpty() && jugadorActual == 1 && !pasa2) {
+//                    pasa2 = !Juego.Jugador.Juega("Segundo Jugador", mano2, mesa, pasa2);
+//                }
+//                if (!mano1.isEmpty() && jugadorActual == 0 && !pasa1) {
+//                    pasa1 = !Juego.Jugador.Juega("Primer Jugador", mano1, mesa, pasa1);
+//                }
+//            } else {
+//                if (!mano1.isEmpty() && jugadorActual == 0 && !pasa1) {
+//                    pasa1 = !Juego.Jugador.Juega("Primer Jugador", mano1, mesa, pasa1);
+//                }
+//                if (!mano2.isEmpty() && jugadorActual == 1 && !pasa2) {
+//                    pasa2 = !Juego.Jugador.Juega("Segundo Jugador", mano2, mesa, pasa2);
+//                }
+//            }
+//
+//            pasa1 = Juego.Jugador.Pasa(new boolean[]{pasa1, pasa2}, new List[]{mano1, mano2}, pila, contador) == 0;
+//
+//        }
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         boolean pasa1 = false;
         boolean pasa2 = false;
         int contador = 0;
@@ -132,7 +158,6 @@ public class MExtras02 {
             }
             contador++;
         }
-
         System.out.println("Mano 1: " + mano1);
         for (int i = 0; i < mano1.size(); i++) {
             System.out.print("(" + mano1.get(i) + ") _[" + i + "]_,");

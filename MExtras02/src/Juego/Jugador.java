@@ -39,4 +39,17 @@ public class Jugador {
             return false;
         }
     }
+
+//    public static int Pasa(boolean[] pasa, List<Ficha>[] manos, List<Ficha> pila, int contador) {
+//        int numJugadores = pasa.length;
+//        int jugadorActual = (contador % numJugadores);
+//
+//        if (pasa[(jugadorActual)]) {
+//            manos[(jugadorActual)].add(pila.remove(0));
+//            pasa[(jugadorActual)] = false;
+//        }
+//
+//        return (jugadorActual);
+//    }
+
 }
