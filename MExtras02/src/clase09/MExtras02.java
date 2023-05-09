@@ -136,25 +136,31 @@ public class MExtras02 {
 
         while (!pila.isEmpty() && !mano1.isEmpty() && !mano2.isEmpty()) {
             if (max1 > max2) {
-                if (contador % 2 == 0) {
+                if (contador % 2 != 0) {
                     pasa1 = !Juego.Jugador.Juega("Primer Jugador", mano1, mesa, pasa1);
                 } else {
                     pasa2 = !Juego.Jugador.Juega("Segundo Jugador", mano2, mesa, pasa2);
                 }
             } else {
-                if (contador % 2 == 0) {
+                if (contador % 2 != 0) {
                     pasa2 = !Juego.Jugador.Juega("Segundo Jugador", mano2, mesa, pasa2);
                 } else {
                     pasa1 = !Juego.Jugador.Juega("Primer Jugador", mano1, mesa, pasa1);
                 }
             }
             System.out.println("En la Mesa: " + mesa);
-            if (max1 > max2) {
-                mano1.add(pila.remove(0));
-                pasa1 = false;
+            if (contador % 2 != 0) {
+                if (pasa1) {
+                    mano1.add(pila.remove(0));
+                    pasa1 = false;   
+                }
+
             } else {
-                mano2.add(pila.remove(0));
-                pasa2 = false;
+                if (pasa2) {
+                    mano2.add(pila.remove(0));
+                    pasa2 = false; 
+                }
+
             }
             contador++;
         }
