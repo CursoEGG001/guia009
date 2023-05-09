@@ -132,10 +132,10 @@ public class MExtras02 {
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         boolean pasa1 = false;
         boolean pasa2 = false;
-        int contador = 0;
+        int contador = (max1 > max2) ? 0 : 1;
 
-        while (!pila.isEmpty() && !mano1.isEmpty() && !mano2.isEmpty()) {
-            if (max1 > max2) {
+        while (!pila.isEmpty() && !mano1.isEmpty() && !mano2.isEmpty() ) { 
+            if (contador==0) { // max1 > max2 era lo que estaba
                 if (contador % 2 != 0) {
                     pasa1 = !Juego.Jugador.Juega("Primer Jugador", mano1, mesa, pasa1);
                 } else {

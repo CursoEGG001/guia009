@@ -56,6 +56,7 @@ public class FichaServicio {
                 elementos.add(pil2.get(p2));
             }
         }
+        System.out.println("Espiando...\n las fichas validas:" + elementos.toString());
         return elementos;
     }
 

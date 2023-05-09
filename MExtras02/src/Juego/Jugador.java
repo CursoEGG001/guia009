@@ -13,6 +13,14 @@ import java.util.List;
  */
 public class Jugador {
 
+    /**
+     *La Funcion se encarga de iniciar el juego de un jugador.
+     * @param nombre Tiene los datos del jugador
+     * @param manoJuego es la lista que contiene en su mano el jugador
+     * @param pilaDescarte es el lugar a donde se pone la ficha
+     * @param noJuega es un indicador de pasar el turno
+     * @return el ultimo estado que fue valido para jugar.
+     */
     public static boolean Juega(String nombre, List<Ficha> manoJuego, List<Ficha> pilaDescarte, boolean noJuega) {
         List<Ficha> usables = FichaServicio.getCombinables(pilaDescarte, manoJuego);
         Ficha laFicha = new Ficha();
